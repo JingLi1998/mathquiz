@@ -57,9 +57,11 @@ while True:
             m.quit_quiz(attempt)
                 
             # Add a point to score if correct.
-            if int(attempt) == answer:
-                score += 1
-                break
+            try:
+                if int(attempt) == answer:
+                    score += 1
+            except:
+                pass
             else:
                 break
         
@@ -77,7 +79,7 @@ while True:
             name = input('Please type your name: ')
             m.save_score(filename, name, score)
             print('You score has been saved.')
-            view_score = input('Would you like to view your scores? (y/n)')
+            view_score = input('\nWould you like to view your scores? (y/n)')
             if view_score == 'y':
                 m.view_score(filename, name)
                 
@@ -85,7 +87,7 @@ while True:
             # Create new dictionary and json file and save scores
             scores = {}
             name = input('Please type your name: ')
-            print(f'Nice to meet you {name}!')
+            print(f'\nNice to meet you {name}!')
             scores[name] = [score]
             with open(filename, 'w') as f_obj:
                 json.dump(scores, f_obj)        

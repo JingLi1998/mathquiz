@@ -111,10 +111,10 @@ def save_score(filename, name, score):
     with open(filename, 'r+') as f_obj:
         scores = json.load(f_obj)
         if name in scores.keys():
-            print(f'Welcome back {name}!')
+            print(f'\nWelcome back {name}!')
             scores[name].append(score)
         else:
-            print(f'Nice to meet you {name}!')
+            print(f'\nNice to meet you {name}!')
             scores[name] = [score]
         # Seek to start and save file
         f_obj.seek(0)
